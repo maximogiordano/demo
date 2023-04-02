@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:~/h2/demo
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+client:
+  id: 3c82baa3-d7fc-4cab-87c3-0e5b47683856
+  clientes:
+    name: api-clientes-desa
+    url: http://api-clientes.k8sds.gscorp.ad
+  personas:
+    name: api-personas-desa
+    url: http://api-personas.k8sds.gscorp.ad

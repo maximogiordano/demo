@@ -1,0 +1,33 @@
+{
+  "nombre": "CABRERA ALDANA AYELEN C/MORALE",
+  "integraciones": [
+    {
+      "codigo_titularidad": 1,
+      "firma": "T",
+      "persona": {
+        "tipo": "J",
+        "razon_social": "SUPERIOR TRIBUNAL DE JUSTICIA",
+        "documento": {
+          "codigo_pais": 80,
+          "codigo_tipo": 1,
+          "numero": "30634599068"
+        }
+      }
+    },
+    {
+      "codigo_titularidad": 2,
+      "firma": "",
+      "persona": {
+        "tipo": "F",
+        "nombre": "ALDANA AYELEN",
+        "apellido": "CABRERA",
+        "genero": "F",
+        "documento": {
+          "codigo_pais": 80,
+          "codigo_tipo": 4,
+          "numero": "34921969"
+        }
+      }
+    }
+  ]
+}

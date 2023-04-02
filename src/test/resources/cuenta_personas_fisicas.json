@@ -1,0 +1,35 @@
+{
+  "nombre": "COMPAN, MARIA JOSEFA",
+  "integraciones": [
+    {
+      "codigo_titularidad": 1,
+      "firma": "T",
+      "persona": {
+        "tipo": "F",
+        "nombre": "MARIA JOSEFA",
+        "apellido": "COMPAN",
+        "genero": "F",
+        "documento": {
+          "codigo_pais": 80,
+          "codigo_tipo": 6,
+          "numero": "2348493"
+        }
+      }
+    },
+    {
+      "codigo_titularidad": 2,
+      "firma": "",
+      "persona": {
+        "tipo": "F",
+        "nombre": "MARIA DE LOURDES",
+        "apellido": "REBOLLOSO",
+        "genero": "F",
+        "documento": {
+          "codigo_pais": 80,
+          "codigo_tipo": 4,
+          "numero": "16162753"
+        }
+      }
+    }
+  ]
+}

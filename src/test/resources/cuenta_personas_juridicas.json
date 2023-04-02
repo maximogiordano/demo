@@ -1,0 +1,18 @@
+{
+  "nombre": "GIRASOLES DE LA PAMPA SAS",
+  "integraciones": [
+    {
+      "codigo_titularidad": 1,
+      "firma": "T",
+      "persona": {
+        "tipo": "J",
+        "razon_social": "GIRASOLES DE LA PAMPA SAS",
+        "documento": {
+          "codigo_pais": 80,
+          "codigo_tipo": 1,
+          "numero": "30715905414"
+        }
+      }
+    }
+  ]
+}
