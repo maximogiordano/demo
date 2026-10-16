@@ -89,8 +89,9 @@ class PersonServiceTest {
   @Test
   void updateThrowsWhenPersonDoesNotExist() {
     when(personRepository.existsById(1L)).thenReturn(false);
+    PersonDto personDto = personDto(null, "John", "Doe");
 
-    assertThatThrownBy(() -> personService.update(1L, personDto(null, "John", "Doe")))
+    assertThatThrownBy(() -> personService.update(1L, personDto))
         .isInstanceOf(NoSuchElementException.class);
     verify(personRepository, never()).save(any());
   }
