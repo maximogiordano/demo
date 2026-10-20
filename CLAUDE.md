@@ -31,5 +31,5 @@ Layered: `controller` → `service` → `repository` → `entity`, with `dto` as
 
 Configured in `src/main/resources/application.yml`:
 - PostgreSQL connection is read from `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`, defaulting to a local database (`jdbc:postgresql://localhost:5432/demo`, user `sa`).
-- Schema is managed by Hibernate `ddl-auto: update` (no migration tool).
+- Schema is managed by Flyway migrations in `src/main/resources/db/migration` (`V<n>__<description>.sql`), applied on startup. Hibernate runs with `ddl-auto: validate`, so any entity change (including `Person.MAX_NAME_LENGTH`) needs a matching new migration; never edit an already-applied one.
 - `show-sql: true` logs all SQL.
