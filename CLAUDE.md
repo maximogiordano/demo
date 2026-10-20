@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Spring Boot 4.1 (Java 17, Gradle) REST API exposing CRUD for a single `Person` resource at `/persons`, backed by JPA and a file-based H2 database. Lombok is used throughout.
+Spring Boot 4.1 (Java 17, Gradle) REST API exposing CRUD for a single `Person` resource at `/persons`, backed by JPA and PostgreSQL. Lombok is used throughout.
 
 ## Commands
 
 Use `./gradlew` (Git Bash) or `gradlew.bat` (PowerShell/cmd).
 
 - Build: `./gradlew build`
-- Run the app: `./gradlew bootRun` (port 8080)
+- Run the app: `./gradlew bootRun` (port 8080; needs a reachable Postgres, see Database)
 - Run all tests: `./gradlew test`
 - Run a single test: `./gradlew test --tests "com.example.demo.SomeTest.someMethod"`
 
@@ -30,6 +30,6 @@ Layered: `controller` → `service` → `repository` → `entity`, with `dto` as
 ## Database
 
 Configured in `src/main/resources/application.yml`:
-- H2 file DB at `~/h2/persons` (persists across runs, outside the repo); schema managed by `ddl-auto: update`.
-- H2 console at `http://localhost:8080/h2-console` (JDBC URL `jdbc:h2:file:~/h2/persons`, user `sa`).
+- PostgreSQL connection is read from `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`, defaulting to a local database (`jdbc:postgresql://localhost:5432/demo`, user `sa`).
+- Schema is managed by Hibernate `ddl-auto: update` (no migration tool).
 - `show-sql: true` logs all SQL.
