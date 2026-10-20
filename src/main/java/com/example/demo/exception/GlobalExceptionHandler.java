@@ -60,8 +60,8 @@ public class GlobalExceptionHandler {
   @ExceptionHandler(ObjectOptimisticLockingFailureException.class)
   public ResponseEntity<ErrorDto> handleObjectOptimisticLockingFailureException(
       ObjectOptimisticLockingFailureException e) {
-    return error(HttpStatus.CONFLICT,
-        "the given object was modified or deleted by another request", e);
+    return error(HttpStatus.CONFLICT, "the given object was modified or deleted by another request",
+        e);
   }
 
   @ExceptionHandler(Exception.class)
