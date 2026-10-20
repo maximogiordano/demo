@@ -7,6 +7,7 @@ import org.springframework.data.core.PropertyReferenceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -54,6 +55,13 @@ public class GlobalExceptionHandler {
   @ExceptionHandler(NoSuchElementException.class)
   public ResponseEntity<ErrorDto> handleNoSuchElementException(NoSuchElementException e) {
     return error(HttpStatus.NOT_FOUND, "the given object does not exist", e);
+  }
+
+  @ExceptionHandler(ObjectOptimisticLockingFailureException.class)
+  public ResponseEntity<ErrorDto> handleObjectOptimisticLockingFailureException(
+      ObjectOptimisticLockingFailureException e) {
+    return error(HttpStatus.CONFLICT,
+        "the given object was modified or deleted by another request", e);
   }
 
   @ExceptionHandler(Exception.class)
