@@ -17,6 +17,10 @@ repositories {
     mavenCentral()
 }
 
+// Jackson 2 is only pulled in by springdoc (swagger-core); Boot 4.1.1 manages it at 2.21.5,
+// which has known CVEs. Drop this once the Boot BOM manages a fixed version.
+ext['jackson-2-bom.version'] = '2.21.8'
+
 dependencies {
 
     // Web / REST API
@@ -34,6 +38,9 @@ dependencies {
 
     // Bean validation (@NotNull, @Pattern, etc.)
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // OpenAPI docs + Swagger UI (/swagger-ui.html, /v3/api-docs)
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.1.1'
 
     // Lombok
     compileOnly 'org.projectlombok:lombok'

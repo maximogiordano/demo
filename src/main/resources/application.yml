@@ -10,3 +10,8 @@ spring:
       ddl-auto: validate
     open-in-view: true
     show-sql: true
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
