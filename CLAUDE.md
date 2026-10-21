@@ -11,7 +11,7 @@ Spring Boot 4.1 (Java 17, Gradle) REST API exposing CRUD for a single `Person` r
 Use `./gradlew` (Git Bash) or `gradlew.bat` (PowerShell/cmd).
 
 - Build: `./gradlew build`
-- Run the app: `./gradlew bootRun` (port 8080; needs a reachable Postgres, see Database)
+- Run the app: `./gradlew bootRun` (port 8080; needs a reachable Postgres, see Database). Swagger UI is at `/swagger-ui.html` and the OpenAPI spec at `/v3/api-docs` (springdoc-openapi, generated from the controllers).
 - Run all tests: `./gradlew test`
 - Run a single test: `./gradlew test --tests "com.example.demo.service.PersonServiceTest.update"`
 
@@ -20,6 +20,7 @@ Use `./gradlew` (Git Bash) or `gradlew.bat` (PowerShell/cmd).
 `./gradlew test` needs no Postgres. Keep it that way: Flyway and Hibernate validation run on startup, so any `@SpringBootTest` must point the datasource at in-memory H2 (`testRuntimeOnly 'com.h2database:h2'`) in PostgreSQL mode, as `PersonControllerIT` does, so migrations must stay H2-compatible.
 
 - `PersonControllerIT`: integration test with the full context and `@AutoConfigureMockMvc`. It overrides the datasource with `@SpringBootTest(properties = ...)`, seeds rows with its `save(...)` helper, sends JSON text blocks, asserts the response with `jsonPath`, and checks persisted rows through `PersonRepository` (cleaned up in `@AfterEach`). Not-found paths use `NONEXISTENT_ID` (`Long.MAX_VALUE`). The `delete` test method shadows the static `delete(...)` request builder, so it is called as `MockMvcRequestBuilders.delete`. This is where service-layer validation is exercised.
+- `OpenApiIT`: same H2 setup; checks that `/v3/api-docs` lists the `/persons` paths and that Swagger UI is served.
 - `PersonControllerTest` / `PersonServiceTest`: `@ExtendWith(MockitoExtension.class)` with `@InjectMocks` on the class under test and `@Mock` for its dependency. Each test builds expected `PersonDto`s field by field, stubs with `when(...)`, and asserts with `assertEquals` (Lombok `@Data` equality). Not-found paths use `assertThrows(NoSuchElementException.class, ...)`.
 - `GlobalExceptionHandlerTest`: instantiates the handler directly, builds a real exception per handler, and asserts both the status and the full `ErrorDto`.
 - Test methods are named after the method under test (`readById`/`readPage` for the `read` overloads, `...NotFound` for error paths).
